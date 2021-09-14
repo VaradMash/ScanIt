@@ -11,8 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScanIt">
-        <activity android:name=".ScanCode"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".Menu"
+            android:noHistory="true" />
+        <activity android:name=".ScanCode"
+            android:noHistory="true"/>
+        <activity android:name=".MainActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

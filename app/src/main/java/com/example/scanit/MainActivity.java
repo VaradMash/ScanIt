@@ -1,58 +1,28 @@
 package com.example.scanit;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
-import com.budiyev.android.codescanner.CodeScanner;
-import com.budiyev.android.codescanner.CodeScannerView;
-import com.budiyev.android.codescanner.DecodeCallback;
-import com.google.zxing.Result;
+import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
-    private CodeScanner mCodeScanner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        CodeScannerView scannerView = findViewById(R.id.scanner_view);
-        mCodeScanner = new CodeScanner(this, scannerView);
-        mCodeScanner.setDecodeCallback(new DecodeCallback() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        //Start Menu activity after 3 seconds
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
-            public void onDecoded(@NonNull final Result result) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        /*
-                         *  Utility :   Navigate to the desired URL.
-                         */
-                        Toast.makeText(MainActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+            public void run() {
+                Intent intent = new Intent(getApplicationContext(), Menu.class);
+                startActivity(intent);
+                MainActivity.this.finish();
             }
-        });
-
-        scannerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mCodeScanner.startPreview();
-            }
-        });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mCodeScanner.startPreview();
-    }
-
-    @Override
-    protected void onPause() {
-        mCodeScanner.releaseResources();
-        super.onPause();
+        }, 5000);
     }
 }

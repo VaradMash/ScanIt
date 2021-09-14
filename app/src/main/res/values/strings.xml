@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ScanIt</string>
+    <string name="scan_code">Scan Code</string>
+    <string name="view_history">View History</string>
+    <string name="generate_qr_code">Generate QR Code</string>
+    <string name="developer">Developer</string>
 </resources>
