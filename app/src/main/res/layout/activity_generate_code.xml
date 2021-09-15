@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GenerateCode">
+
+    <TextView
+        android:id="@+id/generateHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/generate_code"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/logo_font_resource"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:background="@color/primary"
+        app:layout_constraintVertical_bias="0" />
+
+    <EditText
+        android:id="@+id/etCodeText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/enter_text"
+        android:autofillHints="@string/enter_text"
+        android:textSize="20sp"
+        android:fontFamily="@font/logo_font_resource"
+        app:layout_constraintTop_toBottomOf="@id/generateHeader"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="textMultiLine"
+        app:layout_constraintVertical_bias="0.05"/>
+
+    <Button
+        android:id="@+id/btnGenerate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary_text"
+        android:text="@string/generate_qr_code"
+        android:textSize="20sp"
+        android:fontFamily="@font/logo_font_resource"
+        app:layout_constraintTop_toBottomOf="@id/etCodeText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.05"/>
+
+    <ImageView
+        android:id="@+id/qrPlaceHolder"
+        android:layout_width="320dp"
+        android:layout_height="340dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGenerate"
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@android:drawable/screen_background_dark_transparent"
+        android:contentDescription="@string/generate_qr_code" />
+
+    <Button
+        android:id="@+id/btnShareCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:backgroundTint="@color/primary_text"
+        android:text="@string/share"
+        android:textSize="20sp"
+        android:fontFamily="@font/logo_font_resource"
+        app:layout_constraintTop_toBottomOf="@id/qrPlaceHolder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
