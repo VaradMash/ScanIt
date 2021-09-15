@@ -7,4 +7,9 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="exit_message">Are you sure you want to exit?</string>
+    <string name="title">ScanIt</string>
+    <string name="sub_header">QR Code and Barcode Scanner</string>
+    <string name="result">Result</string>
+    <string name="data">Data :</string>
+    <string name="copy">Copy</string>
 </resources>

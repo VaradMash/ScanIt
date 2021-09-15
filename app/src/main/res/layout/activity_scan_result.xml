@@ -6,4 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".ScanResult">
 
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/result"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/logo_font_resource"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:background="@color/primary"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/tvData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/data"
+        android:textSize="30sp"
+        android:fontFamily="@font/logo_font_resource"
+        android:textColor="@color/primary_text"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintVertical_bias="0.15"/>
+
+    <TextView
+        android:id="@+id/result_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="30sp"
+        android:fontFamily="@font/logo_font_resource"
+        android:textColor="@color/primary_text"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintVertical_bias="0.25"/>
+
+    <Button
+        android:id="@+id/btnShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary_light"
+        app:layout_constraintTop_toTopOf="@id/result_data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Share"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/logo_font_resource"
+        android:textSize="25sp"
+        android:padding="10sp"
+        android:background="@drawable/round_edge_button"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintVertical_bias="0.1"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

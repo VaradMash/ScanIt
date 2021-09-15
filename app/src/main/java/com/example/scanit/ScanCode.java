@@ -35,8 +35,14 @@ public class ScanCode extends AppCompatActivity {
             mCodeScanner.setDecodeCallback(result -> runOnUiThread(() -> {
                 /*
                  *  Input   :   Result of Scan
-                 *  Utility :   Display result and 
+                 *  Utility :   Navigate to result activity
+                 *  Output  :   Activity Launch
                  */
+                Intent intent = new Intent(getApplicationContext(), ScanResult.class);
+                intent.putExtra("result", result.getText());
+                startActivity(intent);
+                // Destroy current activity
+                ScanCode.this.finish();
                 Toast.makeText(this, result.getText(), Toast.LENGTH_SHORT).show();
     }));
 
