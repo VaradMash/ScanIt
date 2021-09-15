@@ -4,4 +4,7 @@
     <string name="view_history">View History</string>
     <string name="generate_qr_code">Generate QR Code</string>
     <string name="developer">Developer</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="exit_message">Are you sure you want to exit?</string>
 </resources>
