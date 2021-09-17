@@ -69,7 +69,47 @@
         android:padding="10sp"
         android:background="@drawable/round_edge_button"
         app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintVertical_bias="0.1"/>
+        app:layout_constraintVertical_bias="0.2"/>
+
+    <Button
+        android:id="@+id/btnCopy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary_light"
+        app:layout_constraintTop_toTopOf="@id/result_data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/copy_to_clipboard"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/logo_font_resource"
+        android:textSize="25sp"
+        android:padding="10sp"
+        android:background="@drawable/round_edge_button"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintVertical_bias="0.4"/>
+
+
+    <Button
+        android:id="@+id/btnAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary_light"
+        app:layout_constraintTop_toTopOf="@id/result_data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/copy_to_clipboard"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:fontFamily="@font/logo_font_resource"
+        android:textSize="25sp"
+        android:padding="10sp"
+        android:background="@drawable/round_edge_button"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintVertical_bias="0.6"/>
+
 
 
 
