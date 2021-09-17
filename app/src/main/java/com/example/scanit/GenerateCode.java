@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +26,7 @@ import androidmads.library.qrgenearator.QRGEncoder;
 public class GenerateCode extends AppCompatActivity {
 
     private EditText etCodeText;
-    private Button btnGenerate, btnShareCode;
+    private Button btnShareCode;
     private Bitmap qrBits;
     private ImageView qrPlaceholder;
 
@@ -33,60 +35,68 @@ public class GenerateCode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_code);
 
-        // Display instruction message
-        Toast.makeText(this, "Make sure you click on Generate Code button every time you update the text!", Toast.LENGTH_SHORT).show();
-
         // Initialize widgets
         etCodeText = (EditText)findViewById(R.id.etCodeText);
-        btnGenerate = (Button)findViewById(R.id.btnGenerate);
         btnShareCode = (Button)findViewById(R.id.btnShareCode);
         qrPlaceholder = (ImageView)findViewById(R.id.qrPlaceHolder);
 
-        btnGenerate.setOnClickListener(new View.OnClickListener() {
+        etCodeText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 /*
-                 *  Input   :   Text of QR Code.
-                 *  Utility :   Generate QR Code for the given text if text field is not empty, else display error message.
-                 *  Output  :   QR Code.
+                 *  Input   :   Changed text
+                 *  Utility :   Generate QRCode for text
+                 *  Output  :   QRCode rendered to screen.
                  */
-                String data = etCodeText.getText().toString();
-                if(data.isEmpty())
+                if(s.toString().isEmpty())
                 {
-                    etCodeText.setError("Please enter text to generate QR Code!");
-                    etCodeText.requestFocus();
+                    btnShareCode.setVisibility(View.GONE);
                 }
-                else
+                QRGEncoder qrgEncoder = new QRGEncoder(s.toString(), null, QRGContents.Type.TEXT, 500);
+                try
                 {
-                    QRGEncoder qrgEncoder = new QRGEncoder(data, null, QRGContents.Type.TEXT, Integer.MIN_VALUE);
-                    try
-                    {
-                        // Display the share button.
-                        btnShareCode.setVisibility(View.VISIBLE);
-                        // Get image from encoder.
-                        qrBits = qrgEncoder.getBitmap();
-                        // Render to screen.
-                        qrPlaceholder.setImageBitmap(qrBits);
-                    }
-                    catch (Exception e)
-                    {
-                        e.printStackTrace();
-                    }
+                    // Display the share button.
+                    btnShareCode.setVisibility(View.VISIBLE);
+                    // Get image from encoder.
+                    qrBits = qrgEncoder.getBitmap();
+                    // Render to screen.
+                    qrPlaceholder.setImageBitmap(qrBits);
                 }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.d("Debug", s.toString());
+
             }
         });
 
-        btnShareCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*
-                 *  Input   :   QRCode Image
-                 *  Utility :   Share generated QRCode.
-                 *  Output  :   Share intent.
-                 */
-                Uri bitmap_uri = null;
+        btnShareCode.setOnClickListener(v -> {
+            /*
+             *  Input   :   QRCode Image
+             *  Utility :   Share generated QRCode.
+             *  Output  :   Share intent.
+             */
+            String data = etCodeText.getText().toString();
+            if(data.isEmpty())
+            {
+                etCodeText.setError("Field cannot be empty !");
+                etCodeText.requestFocus();
+            }
+            else
+            {
                 try
                 {
+                    Uri bitmap_uri;
                     bitmap_uri = saveImage(qrBits);
                     shareImageUri(bitmap_uri);
                 }
@@ -94,8 +104,8 @@ public class GenerateCode extends AppCompatActivity {
                 {
                     Toast.makeText(GenerateCode.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
             }
+
         });
     }
 

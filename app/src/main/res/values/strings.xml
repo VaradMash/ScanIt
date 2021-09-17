@@ -15,4 +15,5 @@
     <string name="enter_text">Enter Text</string>
     <string name="generate_code">Generate Code</string>
     <string name="share">Share</string>
+    <string name="copy_to_clipboard">Copy to Clipboard</string>
 </resources>
