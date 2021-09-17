@@ -83,4 +83,19 @@ public class ScanCode extends AppCompatActivity {
         mCodeScanner.releaseResources();
         super.onPause();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        /*
+         *  Input   :   Back Button Pressed.
+         *  Utility :   Navigate to Menu activity.
+         *  Output  :   Activity Launch
+         */
+        // Initialize intent
+        Intent intent = new Intent(getApplicationContext(), Menu.class);
+        startActivity(intent);
+        // Destroy current activity.
+        ScanCode.this.finish();
+    }
 }
