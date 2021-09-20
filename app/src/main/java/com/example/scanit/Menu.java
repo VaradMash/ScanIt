@@ -67,7 +67,9 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
             {
                 break;
             }
-            case R.id.btnDeveloper : {
+            case R.id.btnDeveloper :
+            {
+                next_intent = new Intent(getApplicationContext(), DeveloperDetails.class);
                 break;
             }
         }

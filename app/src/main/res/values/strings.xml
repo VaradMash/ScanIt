@@ -16,4 +16,9 @@
     <string name="generate_code">Generate Code</string>
     <string name="share">Share</string>
     <string name="copy_to_clipboard">Copy to Clipboard</string>
+    <string name="author_description">Android Developer | Machine Learning and Computer Vision Enthusiast</string>
+    <string name="author_name">Varad Mashalkar</string>
+    <string name="email">EMail</string>
+    <string name="github">GitHub</string>
+    <string name="linkedin">LinkedIn</string>
 </resources>
