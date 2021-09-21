@@ -22,6 +22,9 @@ import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.google.zxing.Result;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class ScanCode extends AppCompatActivity {
     private static final int RC_PERMISSION = 10;
     private CodeScanner mCodeScanner;
@@ -38,6 +41,14 @@ public class ScanCode extends AppCompatActivity {
                  *  Utility :   Navigate to result activity
                  *  Output  :   Activity Launch
                  */
+                // Add result to database
+                DatabaseHandler db = new DatabaseHandler(this);
+                LocalDateTime time = LocalDateTime.now();
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                String timestamp = dateTimeFormatter.format(time);
+                db.addEntry(new HistoryElement(result.getText(), timestamp));
+
+                // Launch result activity.
                 Intent intent = new Intent(getApplicationContext(), ScanResult.class);
                 intent.putExtra("result", result.getText());
                 startActivity(intent);
