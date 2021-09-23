@@ -21,4 +21,6 @@
     <string name="email">EMail</string>
     <string name="github">GitHub</string>
     <string name="linkedin">LinkedIn</string>
+    <string name="history">History</string>
+    <string name="date">Date :</string>
 </resources>
