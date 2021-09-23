@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScanIt">
-        <activity android:name=".DeveloperDetails"></activity>
+        <activity android:name=".ShowHistory"></activity>
+        <activity android:name=".DeveloperDetails" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

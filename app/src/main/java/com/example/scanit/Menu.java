@@ -65,6 +65,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
             }
             case R.id.btnViewHistory :
             {
+                next_intent = new Intent(getApplicationContext(), ShowHistory.class);
                 break;
             }
             case R.id.btnDeveloper :
