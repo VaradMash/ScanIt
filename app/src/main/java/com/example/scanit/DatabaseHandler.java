@@ -6,25 +6,26 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "historyManager";
+    private static final String DATABASE_NAME = "historyManager.db";
     private static final int DATABASE_VERSION = 1;
     public static final String  TABLE_HISTORY = "historyTable";
     public static final String KEY_DATA = "data";
-    public static final String KEY_TIMESTAMP = "timestamp";
-
-    
+    public static final String KEY_TIMESTAMP = "scan_date";
+    private Context context;
 
     public DatabaseHandler(Context context) {
         /*
          *  Constructor
          */
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -36,7 +37,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
          */
         String CREATE_TABLE = "CREATE TABLE " + TABLE_HISTORY + "("
                 + KEY_DATA + " TEXT, "
-                + KEY_TIMESTAMP + "TEXT " + ")";
+                + KEY_TIMESTAMP + " TEXT " + ")";
         db.execSQL(CREATE_TABLE);
     }
 
@@ -79,27 +80,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
          *  Utility :   Get Data from database.
          *  Output  :   List.
          */
+        // Initialize Columns
+        String[] columns = new String[] {KEY_DATA, KEY_TIMESTAMP};
+
         // Initialize list
         List<HistoryElement> result = new ArrayList<HistoryElement>();
 
-        // Initialize query
-        String QUERY = "SELECT * FROM " + TABLE_HISTORY;
+        String selectQuery = "SELECT  * FROM " + TABLE_HISTORY + " ORDER BY " +
+                KEY_TIMESTAMP + " DESC";
 
-        // Initialize database
         SQLiteDatabase db = this.getWritableDatabase();
         @SuppressLint("Recycle")
-        Cursor cursor = db.rawQuery(QUERY, null);
+        Cursor cursor = db.rawQuery(selectQuery, null);
 
         // Looping through the obtained result.
-        if(cursor.moveToFirst())
+        while(cursor.moveToNext())
         {
-            do
-            {
-                HistoryElement new_Element = new HistoryElement();
-                new_Element.setData(cursor.getString(0));
-                new_Element.setTime_stamp(cursor.getString(1));
-                result.add(new_Element);
-            }while (cursor.moveToNext());
+            HistoryElement new_Element = new HistoryElement();
+            new_Element.setData(cursor.getString(cursor.getColumnIndex(KEY_DATA)));
+            new_Element.setTime_stamp(cursor.getString(cursor.getColumnIndex(KEY_TIMESTAMP)));
+            result.add(new_Element);
         }
         return result;
     }
