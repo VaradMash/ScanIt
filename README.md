@@ -8,7 +8,7 @@ This repository contains the code for a QR Code and Bar Code scanner and generat
   3. View Scanning History
 
 # Technical Specifications 
-<b>A) Tech Stack</b>
+<b>Tech Stack</b>
 1. Java
 2. XML
 
