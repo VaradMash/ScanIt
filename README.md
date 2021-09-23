@@ -8,13 +8,13 @@ This repository contains the code for a QR Code and Bar Code scanner and generat
   3. View Scanning History
 
 # Technical Specifications 
-## Tech Stack
+<b>A) Tech Stack</b>
 1. Java
 2. XML
 
 # APIs used
-1. <a href="https://github.com/yuriy-budiyev/code-scanner">Code scanner library for Android, based on ZXing</a>
-2. <a href="https://github.com/androidmads/QRGenerator">QR Generator Library</a>
+1. <a target="_blank" href="https://github.com/yuriy-budiyev/code-scanner">Code scanner library for Android, based on ZXing</a>
+2. <a target="_blank" href="https://github.com/androidmads/QRGenerator">QR Generator Library</a>
 
 # Distribution Details
 1. .apk size : 3.51 MB
