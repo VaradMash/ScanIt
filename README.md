@@ -3,9 +3,9 @@ This repository contains the code for a QR Code and Bar Code scanner and generat
 
 # Application Details
 1. This application can be used for following purposes : 
-  1. Scan QR Code or Bar Code
-  2. Generate QR Code.
-  3. View Scanning History
+  a. Scan QR Code or Bar Code
+  b. Generate QR Code.
+  c. View Scanning History
 
 # Technical Specifications 
 <b>Tech Stack</b>
